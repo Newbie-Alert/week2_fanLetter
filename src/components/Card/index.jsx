@@ -10,11 +10,11 @@ const MessageCardContainer = styled.div`
 `;
 
 // MAIN COMPONENT
-export default function Card({ messages }) {
+export default function Card() {
   // MAIN RETURN
   return (
     <MessageCardContainer>
-      <List messages={messages} />
+      <List />
     </MessageCardContainer>
   );
 }

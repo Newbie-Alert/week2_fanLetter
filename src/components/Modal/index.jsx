@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { MessageContextData } from "../../Context/MessageContext";
 
 // STYLED COMPONENT
 const ModalContainer = styled.div`
@@ -34,7 +35,10 @@ const Button = styled.button`
 `;
 
 // MAIN COMPONENT
-export default function Modal({ paramId, setModal, messages, setMessages }) {
+export default function Modal({ paramId, setModal }) {
+  // CONTEXT
+  const { messages, setMessages } = useContext(MessageContextData);
+
   // HOOKS
   const navi = useNavigate();
 

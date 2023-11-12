@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "../Modal";
+import { MessageContextData } from "../../Context/MessageContext";
 
 // STYLED COMPONENTS
 const EditContainer = styled.div`
@@ -50,17 +51,20 @@ const Button = styled.button`
 `;
 
 // MAIN COMPONENT
-export default function Edit({ messages, setMessages, setIsEdit }) {
+export default function Edit({ setIsEdit }) {
+  // CONTEXT
+  const { messages, setMessages } = useContext(MessageContextData);
+
+  // HOOKS
+  const paramId = useParams();
+  const initRef = useRef("");
+
   // VARIABLES
   const data = messages?.find((el) => el.id === paramId.id);
 
   // STATES
   const [modal, setModal] = useState(false);
   const [edited, setEdited] = useState(data.text);
-
-  // HOOKS
-  const paramId = useParams();
-  const initRef = useRef("");
 
   // USE EFFECT
   useEffect(() => {

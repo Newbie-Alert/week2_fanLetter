@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { MessageContextData } from "../../Context/MessageContext";
 
 // STYLED COMPONENT
 const CompFade = keyframes`
@@ -72,7 +73,10 @@ const MessageBox = styled.div`
 `;
 
 // MAIN COMPONENT
-export default function List({ messages }) {
+export default function List() {
+  // CONTEXT
+  const { messages } = useContext(MessageContextData);
+
   // HOOKS
   const navi = useNavigate();
   const returnDetailUrl = (id) => `/message/${id}`;

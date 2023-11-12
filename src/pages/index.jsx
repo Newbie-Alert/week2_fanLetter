@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Modal from "../components/Modal/index.jsx";
 import Edit from "../components/Edit.jsx/index.jsx";
+import { MessageContextData } from "../Context/MessageContext.jsx";
 
 // STYLED COMPONENTS
 const CompFade = keyframes`
@@ -70,9 +71,12 @@ const Button = styled.button`
 `;
 
 // MAIN COMPONENT
-export default function Detail({ messages, setMessages }) {
+export default function Detail() {
   // HOOKS
   const paramId = useParams();
+
+  // CONTEXT
+  const { messages, setMessages } = useContext(MessageContextData);
 
   // STATES
   const [modal, setModal] = useState(false);
@@ -115,16 +119,8 @@ export default function Detail({ messages, setMessages }) {
             </Button>
           </ButtonBox>
         </MessageDetailBox>
-
-        {modal && (
-          <Modal
-            paramId={paramId}
-            setModal={setModal}
-            messages={messages}
-            setMessages={setMessages}
-          />
-        )}
       </DetailContainer>
+      {modal && <Modal paramId={paramId} setModal={setModal} />}
     </>
   );
 }

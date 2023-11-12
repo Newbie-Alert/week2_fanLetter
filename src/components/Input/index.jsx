@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import uuid from "react-uuid";
+import { MessageContextData } from "../../Context/MessageContext";
 
 // STYLED COMPONENTS
 const SectionTitle = styled.h1`
@@ -81,7 +82,10 @@ const SubmitBtn = styled.button.attrs({
 `;
 
 // MAIN COMPONENT
-export default function Input({ setMessages }) {
+export default function Input() {
+  // CONTEXT
+  const { setMessages } = useContext(MessageContextData);
+
   // STATES
   const [sendTo, setSendTo] = useState("민지");
   const [text, setText] = useState("");
