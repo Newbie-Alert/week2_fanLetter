@@ -51,16 +51,16 @@ const Button = styled.button`
 
 // MAIN COMPONENT
 export default function Edit({ messages, setMessages, setIsEdit }) {
+  // HOOKS
+  const paramId = useParams();
+  const initRef = useRef("");
+
   // VARIABLES
   const data = messages?.find((el) => el.id === paramId.id);
 
   // STATES
   const [modal, setModal] = useState(false);
   const [edited, setEdited] = useState(data.text);
-
-  // HOOKS
-  const paramId = useParams();
-  const initRef = useRef("");
 
   // USE EFFECT
   useEffect(() => {
