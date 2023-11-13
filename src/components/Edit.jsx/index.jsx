@@ -81,8 +81,11 @@ export default function Edit({ setIsEdit }) {
   };
 
   const editMessage = () => {
-    data.text = edited;
-    setIsEdit(false);
+    if (edited.length === 0) alert("메세지를 입력하세요");
+    else {
+      data.text = edited;
+      setIsEdit(false);
+    }
   };
 
   // MAIN RETURN

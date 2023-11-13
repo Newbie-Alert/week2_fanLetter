@@ -48,6 +48,7 @@ const MessageArea = styled.textarea.attrs({
   rows: "15",
   cols: "25",
   placeholder: "메세지를 입력하세요",
+  required: true,
 })`
   width: 100%;
   overflow-y: scroll;
