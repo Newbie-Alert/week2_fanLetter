@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "../Modal";
-import { MessageContextData } from "../../Context/MessageContext";
+import { useDispatch, useSelector } from "react-redux";
+import { editTask } from "../../redux/module/messages";
 
 // STYLED COMPONENTS
 const EditContainer = styled.div`
@@ -52,15 +53,18 @@ const Button = styled.button`
 
 // MAIN COMPONENT
 export default function Edit({ setIsEdit }) {
-  // CONTEXT
-  const { messages, setMessages } = useContext(MessageContextData);
+  // Redux
+  const reduxState = useSelector((state) => state.messages);
+
+  // DISPATCH
+  const dispatch = useDispatch();
 
   // HOOKS
   const paramId = useParams();
   const initRef = useRef("");
 
   // VARIABLES
-  const data = messages?.find((el) => el.id === paramId.id);
+  const data = reduxState?.find((el) => el.id === paramId.id);
 
   // STATES
   const [modal, setModal] = useState(false);
@@ -81,7 +85,7 @@ export default function Edit({ setIsEdit }) {
   };
 
   const editMessage = () => {
-    data.text = edited;
+    dispatch(editTask(data, edited));
     setIsEdit(false);
   };
 
@@ -105,14 +109,7 @@ export default function Edit({ setIsEdit }) {
         </ButtonBox>
       </MessageEditBox>
 
-      {modal && (
-        <Modal
-          paramId={paramId}
-          setModal={setModal}
-          messages={messages}
-          setMessages={setMessages}
-        />
-      )}
+      {modal && <Modal paramId={paramId} setModal={setModal} />}
     </EditContainer>
   );
 }

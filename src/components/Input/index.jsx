@@ -1,7 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import uuid from "react-uuid";
-import { MessageContextData } from "../../Context/MessageContext";
+
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/module/messages";
 
 // STYLED COMPONENTS
 const SectionTitle = styled.h1`
@@ -83,8 +85,8 @@ const SubmitBtn = styled.button.attrs({
 
 // MAIN COMPONENT
 export default function Input() {
-  // CONTEXT
-  const { setMessages } = useContext(MessageContextData);
+  // REDUX_DISPATCH
+  const dispatch = useDispatch();
 
   // STATES
   const [sendTo, setSendTo] = useState("민지");
@@ -102,7 +104,7 @@ export default function Input() {
   };
 
   const addMessage = (task) => {
-    setMessages((prev) => [task, ...prev]);
+    dispatch(addTask(task));
   };
 
   const HandleSubmit = (e) => {

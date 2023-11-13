@@ -3,7 +3,6 @@ import { GlobalStyle } from "../GlobalStyle";
 import App from "../App";
 import Detail from "../pages";
 import Header from "../components/Header";
-import MessageContext from "../Context/MessageContext";
 
 const Router = () => {
   // MAIN RETURN
@@ -11,12 +10,10 @@ const Router = () => {
     <BrowserRouter>
       <Header />
       <GlobalStyle />
-      <MessageContext>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/message/:id" element={<Detail />} />
-        </Routes>
-      </MessageContext>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/message/:id" element={<Detail />} />
+      </Routes>
     </BrowserRouter>
   )
 }

@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import { MessageContextData } from "../../Context/MessageContext";
+import { useSelector } from "react-redux";
 
 // STYLED COMPONENT
 const CompFade = keyframes`
@@ -74,8 +74,9 @@ const MessageBox = styled.div`
 
 // MAIN COMPONENT
 export default function List() {
-  // CONTEXT
-  const { messages } = useContext(MessageContextData);
+  // ReduxState
+  const reduxMessages = useSelector((state) => state.messages);
+  console.log(reduxMessages);
 
   // HOOKS
   const navi = useNavigate();
@@ -86,7 +87,7 @@ export default function List() {
     <>
       <ListSectionTitle>Messages</ListSectionTitle>
       <MessageContainer>
-        {messages?.map((message) => {
+        {reduxMessages?.map((message) => {
           return (
             <ListContainer
               onClick={() => navi(`${returnDetailUrl(message.id)}`)}

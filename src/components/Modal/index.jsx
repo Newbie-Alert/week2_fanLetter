@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { MessageContextData } from "../../Context/MessageContext";
+import { deleteTask } from "../../redux/module/messages";
 
 // STYLED COMPONENT
 const ModalContainer = styled.div`
@@ -36,8 +37,11 @@ const Button = styled.button`
 
 // MAIN COMPONENT
 export default function Modal({ paramId, setModal }) {
-  // CONTEXT
-  const { messages, setMessages } = useContext(MessageContextData);
+  // REDUX_STATE
+  const reduxMessages = useSelector((state) => state.messages);
+
+  // REDUX_DISPATCH
+  const dispatch = useDispatch();
 
   // HOOKS
   const navi = useNavigate();
@@ -48,8 +52,8 @@ export default function Modal({ paramId, setModal }) {
   };
 
   const deleteMessage = (id) => {
-    let filtered = messages.filter((el) => el.id !== id);
-    setMessages(filtered);
+    let filtered = reduxMessages?.filter((el) => el.id !== id);
+    dispatch(deleteTask(filtered));
     navi("/");
   };
 

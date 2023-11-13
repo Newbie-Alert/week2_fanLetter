@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Modal from "../components/Modal/index.jsx";
 import Edit from "../components/Edit.jsx/index.jsx";
-import { MessageContextData } from "../Context/MessageContext.jsx";
+import { useSelector } from "react-redux";
 
 // STYLED COMPONENTS
 const CompFade = keyframes`
@@ -75,15 +75,15 @@ export default function Detail() {
   // HOOKS
   const paramId = useParams();
 
-  // CONTEXT
-  const { messages, setMessages } = useContext(MessageContextData);
+  // REDUX_STATE
+  const reduxMessages = useSelector((state) => state.messages);
 
   // STATES
   const [modal, setModal] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
   // VARIABLES
-  const data = messages?.find((el) => el.id === paramId.id);
+  const data = reduxMessages?.find((el) => el.id === paramId.id);
 
   // FUNCTIONS
   const openModal = () => {
@@ -96,14 +96,7 @@ export default function Detail() {
   };
 
   // MAIN RETURN
-  if (isEdit === true)
-    return (
-      <Edit
-        messages={messages}
-        setMessages={setMessages}
-        setIsEdit={setIsEdit}
-      />
-    );
+  if (isEdit === true) return <Edit setIsEdit={setIsEdit} />;
   return (
     <>
       <DetailContainer>
