@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 // STYLED COMPONENTS
@@ -30,7 +31,7 @@ const Title = styled.h1`
 `;
 
 // MAIN COMPONENT
-export default React.memo(function Banner() {
+export default function Banner() {
   // VARIABLES
   const randomImg = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
 
@@ -51,4 +52,4 @@ export default React.memo(function Banner() {
       <BannerImg $randomBack={returnRandomImg()}></BannerImg>
     </BannerContainer>
   );
-});
+}
