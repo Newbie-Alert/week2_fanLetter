@@ -95,12 +95,10 @@ export default function Input() {
   // FUNCTIONS
   const handleChangeSendTo = (e) => {
     setSendTo(e.target.value);
-    console.log(sendTo);
   };
 
   const handleChangeText = (e) => {
     setText(e.target.value);
-    console.log(text);
   };
 
   const addMessage = (task) => {
