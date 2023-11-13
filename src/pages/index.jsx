@@ -88,7 +88,6 @@ export default function Detail({ messages, setMessages }) {
 
   const openEdit = () => {
     setIsEdit(true);
-    console.log(isEdit);
   };
 
   // MAIN RETURN
