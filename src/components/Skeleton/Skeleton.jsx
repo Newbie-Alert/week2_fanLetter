@@ -20,6 +20,7 @@ const SkeletonBox = styled.div`
   animation: ${pulseAni} 3s ease infinite;
   margin-block: 2rem;
   margin-left: 2.2rem;
+  position: relative;
 `;
 
 const SkeletonTitle = styled.div`
@@ -28,6 +29,14 @@ const SkeletonTitle = styled.div`
   background-color: silver;
   margin-bottom: 1rem;
   animation: ${pulseAni} 2s ease infinite;
+`;
+
+const SkeletonText = styled.h2`
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  color: white;
+  z-index: 1;
 `;
 
 const PragraphContainer = styled.div`
@@ -52,6 +61,7 @@ export default function Skeleton() {
         <SkeletonParagraph />
         <SkeletonParagraph />
       </PragraphContainer>
+      <SkeletonText>No Data</SkeletonText>
     </SkeletonBox>
   );
 }

@@ -78,7 +78,6 @@ export default function List() {
   // ReduxState
   const reduxMessages = useSelector((state) => state.messages);
 
-  console.log(reduxMessages);
   // HOOKS
   const navi = useNavigate();
   const returnDetailUrl = (id) => `/message/${id}`;
@@ -87,7 +86,6 @@ export default function List() {
     return (
       <>
         <ListSectionTitle>Messages</ListSectionTitle>
-
         <Skeleton />
       </>
     );
