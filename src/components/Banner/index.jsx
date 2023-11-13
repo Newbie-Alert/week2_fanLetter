@@ -15,7 +15,7 @@ const FadeAnimation = keyframes`
 
 const BannerContainer = styled.div`
   width: 100%;
-  height: 650px;
+  height: 930px;
   position: relative;
 `;
 

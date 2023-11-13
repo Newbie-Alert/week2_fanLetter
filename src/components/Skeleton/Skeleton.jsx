@@ -18,8 +18,6 @@ const SkeletonBox = styled.div`
   background-color: #1f1f1f;
   border-radius: 5px;
   animation: ${pulseAni} 3s ease infinite;
-  margin-block: 2rem;
-  margin-left: 2.2rem;
   position: relative;
 `;
 

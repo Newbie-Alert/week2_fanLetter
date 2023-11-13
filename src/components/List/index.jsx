@@ -30,7 +30,7 @@ const CompFade = keyframes`
 
 const MessageContainer = styled.div`
   width: 100%;
-  height: 421px;
+  height: 370px;
   padding: 1rem 2.5rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -86,7 +86,9 @@ export default function List() {
     return (
       <>
         <ListSectionTitle>Messages</ListSectionTitle>
-        <Skeleton />
+        <MessageContainer>
+          <Skeleton />
+        </MessageContainer>
       </>
     );
   }
