@@ -93,6 +93,7 @@ export default function List() {
   return (
     <>
       <ListSectionTitle>Messages</ListSectionTitle>
+
       <MessageContainer>
         {reduxMessages?.map((message) => {
           return (

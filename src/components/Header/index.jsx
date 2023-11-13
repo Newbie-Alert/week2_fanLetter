@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -8,11 +8,13 @@ const HeaderContainer = styled.div`
   top: 0;
   z-index: 2;
   width: 100%;
-  padding: 1.25rem 3.6rem;
+  padding: 0.85rem 3.6rem;
   background-color: #eaeaea;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transform: ${(props) => `translateY(${props.$headerPosition}%)`};
+  transition: transform 0.3s cubic-bezier(0.245, 0.05, 0.15, 0.95);
 `;
 
 const Logo = styled.h2`
@@ -43,9 +45,20 @@ export default function Header() {
   const navi = useNavigate();
   const toHome = () => navi("/");
 
+  // State
+  const [headerPosition, setHeaderPosition] = useState(0);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 10) {
+      setHeaderPosition(-100);
+    } else {
+      setHeaderPosition(0);
+    }
+  });
+
   // MAIN RETURN
   return (
-    <HeaderContainer>
+    <HeaderContainer $headerPosition={headerPosition}>
       <Logo onClick={toHome}>로고</Logo>
       <SearchContainer>
         <SearchInput />
