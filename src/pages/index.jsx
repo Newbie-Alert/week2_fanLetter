@@ -94,6 +94,7 @@ export default function Detail() {
     setIsEdit(true);
   };
 
+  console.log(reduxMessages);
   // MAIN RETURN
   if (isEdit === true) return <Edit setIsEdit={setIsEdit} />;
   return (

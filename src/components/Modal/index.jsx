@@ -37,9 +37,6 @@ const Button = styled.button`
 
 // MAIN COMPONENT
 export default function Modal({ paramId, setModal }) {
-  // REDUX_STATE
-  const reduxMessages = useSelector((state) => state.messages);
-
   // REDUX_DISPATCH
   const dispatch = useDispatch();
 
@@ -52,8 +49,7 @@ export default function Modal({ paramId, setModal }) {
   };
 
   const deleteMessage = (id) => {
-    let filtered = reduxMessages?.filter((el) => el.id !== id);
-    dispatch(deleteTask(filtered));
+    dispatch(deleteTask(id));
     navi("/");
   };
 

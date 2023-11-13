@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useSelector } from "react-redux";
+import Skeleton from "../Skeleton/Skeleton";
 
 // STYLED COMPONENT
 const CompFade = keyframes`
@@ -77,11 +78,11 @@ export default function List() {
   // ReduxState
   const reduxMessages = useSelector((state) => state.messages);
 
+  console.log(reduxMessages);
   // HOOKS
   const navi = useNavigate();
   const returnDetailUrl = (id) => `/message/${id}`;
 
-  // MAIN RETURN
   return (
     <>
       <ListSectionTitle>Messages</ListSectionTitle>

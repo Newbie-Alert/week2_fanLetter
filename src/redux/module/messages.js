@@ -8,8 +8,8 @@ export const addTask = (task) => {
   return { type: ADD_TASK, payload: task }
 }
 
-export const deleteTask = (filteredTask) => {
-  return { type: DELETE_TASK, payload: filteredTask }
+export const deleteTask = (target) => {
+  return { type: DELETE_TASK, payload: target }
 }
 
 export const editTask = (target, text) => {
@@ -26,10 +26,11 @@ const messages = (state = initialValue, action) => {
     case ADD_TASK:
       return state = [action.payload, ...state]
     case DELETE_TASK:
-      return state = [...action.payload]
+      return state = state.filter(msg => msg.id !== action.payload)
     case EDIT_TASK:
-      action.target.text = action.payload
-      return state;
+      let found = state.find(el => el.id === action.target.id)
+      found.text = action.payload;
+      return state
     default:
       return state
   }

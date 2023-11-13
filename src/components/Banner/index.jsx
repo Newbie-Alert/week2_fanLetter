@@ -1,7 +1,17 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 // STYLED COMPONENTS
+const FadeAnimation = keyframes`
+  0% {
+    filter: opacity(0)
+  }
+
+  100% {
+    filter: opacity(0.7);
+  }
+`;
+
 const BannerContainer = styled.div`
   width: 100%;
   height: 650px;
@@ -15,7 +25,7 @@ const BannerImg = styled.div`
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  filter: opacity(0.7);
+  animation: ${FadeAnimation} 1s forwards;
 `;
 
 const Title = styled.h1`
@@ -41,6 +51,7 @@ export default function Banner() {
 
   // USE EFFECT
   useEffect(() => {
+    console.log(returnRandomImg());
     returnRandomImg();
   }, []);
 
