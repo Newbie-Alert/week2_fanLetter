@@ -36,6 +36,7 @@ const MessageContainer = styled.div`
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
   overflow-y: scroll;
+
   @media screen and (max-width: 900px) {
     grid-template-columns: repeat(3, 1fr);
   }
