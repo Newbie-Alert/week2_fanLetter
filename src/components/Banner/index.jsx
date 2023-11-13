@@ -11,7 +11,8 @@ const BannerContainer = styled.div`
 const BannerImg = styled.div`
   width: 100%;
   height: 100%;
-  background-image: ${(props) => `url(assets/${props.$randomBack})`};
+  background-image: ${(props) =>
+    `url(assets/${props.$randomBack}?time=${new Date().getTime()})`};
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
