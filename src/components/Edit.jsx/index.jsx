@@ -24,6 +24,7 @@ const EditTitle = styled.h3`
 const EditText = styled.textarea.attrs((props) => ({
   placeholder: props.$currentText,
   ref: props.ref,
+  required: true,
 }))`
   width: 100%;
   height: 380px;
@@ -77,8 +78,11 @@ export default function Edit({ messages, setMessages, setIsEdit }) {
   };
 
   const editMessage = () => {
-    data.text = edited;
-    setIsEdit(false);
+    if (edited.length === 0) alert("메세지를 입력하세요");
+    else {
+      data.text = edited;
+      setIsEdit(false);
+    }
   };
 
   // MAIN RETURN
