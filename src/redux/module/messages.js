@@ -1,19 +1,19 @@
 // ACTION VALUE
-const ADD_TASK = "ADD_TASK"
-const DELETE_TASK = "DELETE_TASK"
-const EDIT_TASK = "EDIT_TASK"
+const ADD_MSG = "ADD_MSG"
+const DELETE_MSG = "DELETE_MSG"
+const EDIT_MSG = "EDIT_MSG"
 
 // ACTION CREATOR
-export const addTask = (task) => {
-  return { type: ADD_TASK, payload: task }
+export const addTask = (msg) => {
+  return { type: ADD_MSG, payload: msg }
 }
 
 export const deleteTask = (target) => {
-  return { type: DELETE_TASK, payload: target }
+  return { type: DELETE_MSG, payload: target }
 }
 
 export const editTask = (target, text) => {
-  return { type: EDIT_TASK, payload: text, target }
+  return { type: EDIT_MSG, payload: text, target }
 }
 
 // initValue
@@ -23,11 +23,11 @@ const initialValue = []
 // reducer
 const messages = (state = initialValue, action) => {
   switch (action.type) {
-    case ADD_TASK:
+    case ADD_MSG:
       return state = [action.payload, ...state]
-    case DELETE_TASK:
+    case DELETE_MSG:
       return state = state.filter(msg => msg.id !== action.payload)
-    case EDIT_TASK:
+    case EDIT_MSG:
       let found = state.find(el => el.id === action.target.id)
       found.text = action.payload;
       return state
