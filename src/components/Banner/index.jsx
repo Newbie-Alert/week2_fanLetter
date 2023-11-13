@@ -38,7 +38,7 @@ export default function Banner() {
   const returnRandomImg = () => {
     return randomImg[Math.floor(Math.random() * randomImg.length)];
   };
-  
+
   // USE EFFECT
   useEffect(() => {
     returnRandomImg();
