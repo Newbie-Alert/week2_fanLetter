@@ -76,7 +76,6 @@ const MessageBox = styled.div`
 export default function List() {
   // ReduxState
   const reduxMessages = useSelector((state) => state.messages);
-  console.log(reduxMessages);
 
   // HOOKS
   const navi = useNavigate();
