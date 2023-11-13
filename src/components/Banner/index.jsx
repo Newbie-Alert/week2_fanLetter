@@ -47,12 +47,12 @@ export default function Banner() {
 
   // FUNCTIONS
   const returnRandomImg = () => {
+    setTimeout(() => {});
     return randomImg[Math.floor(Math.random() * randomImg.length)];
   };
 
   // USE EFFECT
   useEffect(() => {
-    console.log(returnRandomImg());
     returnRandomImg();
   }, []);
 

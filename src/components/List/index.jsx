@@ -83,6 +83,15 @@ export default function List() {
   const navi = useNavigate();
   const returnDetailUrl = (id) => `/message/${id}`;
 
+  if (reduxMessages?.length === 0) {
+    return (
+      <>
+        <ListSectionTitle>Messages</ListSectionTitle>
+
+        <Skeleton />
+      </>
+    );
+  }
   return (
     <>
       <ListSectionTitle>Messages</ListSectionTitle>
