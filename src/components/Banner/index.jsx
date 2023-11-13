@@ -30,7 +30,7 @@ const Title = styled.h1`
 `;
 
 // MAIN COMPONENT
-export default function Banner() {
+export default React.memo(function Banner() {
   // VARIABLES
   const randomImg = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
 
@@ -42,7 +42,7 @@ export default function Banner() {
   // USE EFFECT
   useEffect(() => {
     returnRandomImg();
-  }, [randomImg]);
+  }, []);
 
   // MAIN RETURN
   return (
@@ -51,4 +51,4 @@ export default function Banner() {
       <BannerImg $randomBack={returnRandomImg()}></BannerImg>
     </BannerContainer>
   );
-}
+});
