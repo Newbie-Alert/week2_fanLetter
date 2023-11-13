@@ -11,7 +11,7 @@ const BannerContainer = styled.div`
 const BannerImg = styled.div`
   width: 100%;
   height: 100%;
-  background-image: ${(props) => `url(assets/${props.$randomBack})`};
+  background-image: ${(props) => `url('assets/${props.$randomBack}')`};
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
@@ -33,12 +33,12 @@ const Title = styled.h1`
 export default function Banner() {
   // VARIABLES
   const randomImg = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
-  
+
   // FUNCTIONS
   const returnRandomImg = () => {
     return randomImg[Math.floor(Math.random() * randomImg.length)];
   };
-  
+
   // USE EFFECT
   useEffect(() => {
     returnRandomImg();
