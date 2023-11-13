@@ -92,7 +92,6 @@ export default function Detail() {
 
   const openEdit = () => {
     setIsEdit(true);
-    console.log(isEdit);
   };
 
   // MAIN RETURN
