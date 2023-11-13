@@ -33,16 +33,16 @@ const Title = styled.h1`
 export default function Banner() {
   // VARIABLES
   const randomImg = ["bg1.jpg", "bg2.jpg", "bg3.jpg", "bg4.jpg", "bg5.jpg"];
-
-  // USE EFFECT
-  useEffect(() => {
-    returnRandomImg();
-  }, [randomImg]);
-
+  
   // FUNCTIONS
   const returnRandomImg = () => {
     return randomImg[Math.floor(Math.random() * randomImg.length)];
   };
+  
+  // USE EFFECT
+  useEffect(() => {
+    returnRandomImg();
+  }, [randomImg]);
 
   // MAIN RETURN
   return (
