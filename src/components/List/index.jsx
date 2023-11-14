@@ -73,7 +73,7 @@ const ListSectionTitle = styled.h1`
 `;
 
 const MessageBox = styled.div`
-  width: 150px;
+  width: 200px;
   height: 40px;
   word-wrap: break-word;
   text-overflow: ellipsis;
@@ -115,13 +115,12 @@ export default function List() {
       : reduxMessages.filter((el) => el.sendTo === member);
 
   // FUCNTIONS
-  const filterMember = (memberName) => {
-    setMember(memberName);
-  };
+  const filterMember = (memberName) => setMember(memberName);
+
+  const returnDetailUrl = (id) => `/message/${id}`;
 
   // HOOKS
   const navi = useNavigate();
-  const returnDetailUrl = (id) => `/message/${id}`;
 
   return (
     <>
