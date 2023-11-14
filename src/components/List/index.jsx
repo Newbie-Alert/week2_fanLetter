@@ -66,7 +66,7 @@ const ListSectionTitle = styled.h1`
 `;
 
 const MessageBox = styled.div`
-  width: 150px;
+  width: 200px;
   height: 40px;
   word-wrap: break-word;
   text-overflow: ellipsis;
