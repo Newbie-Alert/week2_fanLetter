@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
@@ -60,6 +60,9 @@ const ListSectionTitle = styled.h1`
   text-align: left;
   padding: 1rem 2.5rem;
   border-bottom: 1px solid #1f1f1f50;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
 `;
 
 const MessageBox = styled.div`
@@ -71,23 +74,62 @@ const MessageBox = styled.div`
   -webkit-line-clamp: 2;
 `;
 
+const FilterBtnContainer = styled.div`
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding-top: 0.5rem;
+`;
+
+const FilterBtn = styled.button`
+  &:hover {
+    background-color: #1369b5;
+    color: white;
+  }
+`;
+
 // MAIN COMPONENT
 export default function List({ messages }) {
   // HOOKS
   const navi = useNavigate();
   const returnDetailUrl = (id) => `/message/${id}`;
+  const members = ["전체", "민지", "하니", "다니엘", "혜린", "혜인"];
+  const [member, setMember] = useState("전체");
+
+  // VARIABLES
+  const filtered =
+    member === "전체"
+      ? messages
+      : messages.filter((el) => el.sendTo === member);
+
+  // FUCNTIONS
+  const filterMember = (memberName) => {
+    setMember(memberName);
+  };
 
   // MAIN RETURN
   return (
     <>
-      <ListSectionTitle>Messages</ListSectionTitle>
+      <ListSectionTitle>
+        Messages
+        <FilterBtnContainer>
+          {members.map((el, i) => (
+            <FilterBtn key={i} onClick={() => filterMember(el)}>
+              {el}
+            </FilterBtn>
+          ))}
+        </FilterBtnContainer>
+      </ListSectionTitle>
       <MessageContainer>
-        {messages?.map((message) => {
+        {filtered?.map((message) => {
           return (
             <ListContainer
               onClick={() => navi(`${returnDetailUrl(message.id)}`)}
               key={message.id}>
               <h4>To.&nbsp;{message.sendTo}</h4>
+              <h6>{message.createdAt.toString().slice(0, 15)}</h6>
               <MessageBox>
                 <p>{message.text}</p>
               </MessageBox>
