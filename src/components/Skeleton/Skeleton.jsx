@@ -11,6 +11,29 @@ const pulseAni = keyframes`
   }
 `;
 
+const CompFade = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  25% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
+
 const SkeletonBox = styled.div`
   width: 300px;
   height: fit-content;
@@ -18,6 +41,7 @@ const SkeletonBox = styled.div`
   background-color: #1f1f1f;
   border-radius: 5px;
   animation: ${pulseAni} 3s ease infinite;
+  animation: ${CompFade} 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   position: relative;
 `;
 

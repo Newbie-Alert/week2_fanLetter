@@ -49,6 +49,7 @@ const DetailTitle = styled.h3`
 
 const DetailText = styled.div`
   width: 100%;
+  word-wrap: break-word;
   height: 380px;
   overflow-y: scroll;
   padding: 1rem;
