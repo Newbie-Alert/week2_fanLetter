@@ -51,13 +51,14 @@ const SkeletonParagraph = styled.div`
 `;
 
 export default function Skeleton() {
+  const lineArr = Array(3);
   return (
     <SkeletonBox>
       <SkeletonTitle />
       <PragraphContainer>
-        <SkeletonParagraph />
-        <SkeletonParagraph />
-        <SkeletonParagraph />
+        {[...lineArr].map((el, i) => {
+          return <SkeletonParagraph key={i} />;
+        })}
       </PragraphContainer>
       <SkeletonText>No Data</SkeletonText>
     </SkeletonBox>
