@@ -31,7 +31,7 @@ const MessageContainer = styled.div`
   height: 421px;
   padding: 1rem 2.5rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
   overflow-y: scroll;
 `;
@@ -66,7 +66,9 @@ const ListSectionTitle = styled.h1`
 `;
 
 const MessageBox = styled.div`
+  width: 150px;
   height: 40px;
+  word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
@@ -94,11 +96,12 @@ const FilterBtn = styled.button`
 export default function List({ messages }) {
   // HOOKS
   const navi = useNavigate();
-  const returnDetailUrl = (id) => `/message/${id}`;
-  const members = ["전체", "민지", "하니", "다니엘", "혜린", "혜인"];
+
+  // STATES
   const [member, setMember] = useState("전체");
 
   // VARIABLES
+  const members = ["전체", "민지", "하니", "다니엘", "혜린", "혜인"];
   const filtered =
     member === "전체"
       ? messages
@@ -108,6 +111,7 @@ export default function List({ messages }) {
   const filterMember = (memberName) => {
     setMember(memberName);
   };
+  const returnDetailUrl = (id) => `/message/${id}`;
 
   // MAIN RETURN
   return (
