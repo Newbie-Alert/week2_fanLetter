@@ -23,12 +23,17 @@ const EditTitle = styled.h3`
   border-bottom: 1px solid #1f1f1f;
 `;
 
+const EditName = styled.h4`
+  padding: 1rem;
+  border-bottom: 1px solid #1f1f1f;
+`;
+
 const EditText = styled.textarea.attrs((props) => ({
   placeholder: props.$currentText,
   ref: props.ref,
 }))`
   width: 100%;
-  height: 380px;
+  height: 382px;
   overflow-y: scroll;
   padding: 1rem;
   border: none;
@@ -86,6 +91,7 @@ export default function Edit({ setIsEdit }) {
 
   const editMessage = () => {
     if (edited.length === 0) alert("메세지를 입력하세요");
+    if (edited === data.text) alert("수정사항이 없습니다.");
     else {
       dispatch(editTask(data, edited));
       setIsEdit(false);
@@ -97,6 +103,7 @@ export default function Edit({ setIsEdit }) {
     <EditContainer>
       <MessageEditBox>
         <EditTitle>To.&nbsp;{data.sendTo}</EditTitle>
+        <EditName>Name: &nbsp;{data.name}</EditName>
         <EditText
           onChange={(e) => handleChangeEdited(e)}
           value={edited}

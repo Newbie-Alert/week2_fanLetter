@@ -35,6 +35,10 @@ const InputBox = styled.div`
     border: none;
   }
 
+  input:nth-child(2) {
+    width: 215px;
+  }
+
   span {
     display: flex;
     align-items: center;
@@ -50,7 +54,8 @@ const InputBox = styled.div`
 const MessageArea = styled.textarea.attrs({
   rows: "15",
   cols: "25",
-  placeholder: "메세지를 입력하세요",
+  placeholder: "메세지를 입력하세요 (최대 100글자)",
+  maxLength: 100,
   required: true,
 })`
   width: 100%;
@@ -91,6 +96,7 @@ export default function Input() {
   // STATES
   const [sendTo, setSendTo] = useState("민지");
   const [text, setText] = useState("");
+  const [name, setName] = useState("");
 
   // VARIABLES
   const option = ["민지", "하니", "다니엘", "혜린", "혜인"];
@@ -104,6 +110,10 @@ export default function Input() {
     setText(e.target.value);
   };
 
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
+
   const addMessage = (task) => {
     dispatch(addTask(task));
   };
@@ -114,12 +124,14 @@ export default function Input() {
       id: uuid(),
       sendTo,
       text,
+      name,
       isEdit: false,
       createdAt: new Date(),
     };
     addMessage(task);
     setSendTo("민지");
     setText("");
+    setName("");
   };
 
   // MAIN RETURN
@@ -141,6 +153,16 @@ export default function Input() {
                 </Options>
               ))}
             </select>
+          </span>
+          <span>
+            <p>Name : &nbsp;</p>
+            <input
+              onChange={handleChangeName}
+              value={name}
+              required
+              maxLength={10}
+              placeholder="이름을 입력하세요 (최대 10글자)"
+            />
           </span>
           <span>
             <p>Message : &nbsp;</p>

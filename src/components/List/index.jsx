@@ -54,7 +54,7 @@ const ListContainer = styled.div`
   border-radius: 9px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.3rem;
   cursor: pointer;
   animation: ${CompFade} 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   transition: all 0.1s ease;
@@ -83,8 +83,9 @@ const ListSectionTitle = styled.h1`
 `;
 
 const MessageBox = styled.div`
-  width: 200px;
+  width: 100%;
   height: 40px;
+  border-top: 1px solid #1f1f1f50;
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
