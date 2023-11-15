@@ -138,9 +138,7 @@ export default function List() {
 
   const returnDetailUrl = (id) => `/message/${id}`;
 
-  const changeBg = () => {
-    setColor(true);
-  };
+  const changeBg = () => setColor(true);
 
   // HOOKS
   const navi = useNavigate();
