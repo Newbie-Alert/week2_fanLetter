@@ -3,7 +3,7 @@ const ADD_MSG = "ADD_MSG"
 const DELETE_MSG = "DELETE_MSG"
 const EDIT_MSG = "EDIT_MSG"
 
-// ACTION CREATOR
+// ACTION VALUE CREATOR
 export const addTask = (msg) => {
   return { type: ADD_MSG, payload: msg }
 }
@@ -18,7 +18,6 @@ export const editTask = (target, text) => {
 
 // initValue
 const initialValue = []
-
 
 // reducer
 const messages = (state = initialValue, action) => {
