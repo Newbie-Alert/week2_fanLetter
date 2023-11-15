@@ -91,8 +91,10 @@ export default function Edit({ setIsEdit }) {
 
   const editMessage = () => {
     if (edited.length === 0) alert("메세지를 입력하세요");
-    if (edited === data.text) alert("수정사항이 없습니다.");
-    else {
+    if (edited === data.text) {
+      alert("수정사항이 없습니다.");
+      setIsEdit(false);
+    } else {
       dispatch(editTask(data, edited));
       setIsEdit(false);
     }
