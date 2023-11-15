@@ -37,7 +37,7 @@ const MessageContainer = styled.div`
 `;
 
 const ListContainer = styled.div`
-  height: 200px;
+  height: 170px;
   padding: 1rem;
   border: 1px solid #1f1f1f50;
   border-radius: 9px;

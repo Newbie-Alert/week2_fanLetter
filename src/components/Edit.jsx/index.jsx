@@ -25,6 +25,7 @@ const EditText = styled.textarea.attrs((props) => ({
   placeholder: props.$currentText,
   ref: props.ref,
   required: true,
+  maxLength: 100,
 }))`
   width: 100%;
   height: 380px;

@@ -41,6 +41,9 @@ const InputBox = styled.div`
     text-align: right;
     width: 90px;
   }
+  & input:nth-child(2) {
+    width: 210px;
+  }
 `;
 
 const MessageArea = styled.textarea.attrs({
@@ -48,6 +51,7 @@ const MessageArea = styled.textarea.attrs({
   cols: "25",
   placeholder: "메세지를 입력하세요 (최대 100글자)",
   required: true,
+  maxLength: 100,
 })`
   width: 100%;
   overflow-y: scroll;
@@ -147,8 +151,9 @@ export default function Input({ setMessages }) {
               onChange={(e) => handleChangeName(e)}
               value={name}
               type="text"
+              maxLength={8}
               required
-              placeholder="이름을 입력하세요"
+              placeholder="이름을 입력하세요 (최대 8글자)"
             />
           </span>
           <span>
