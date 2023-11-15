@@ -47,7 +47,8 @@ const InputBox = styled.div`
 const MessageArea = styled.textarea.attrs({
   rows: "15",
   cols: "25",
-  placeholder: "메세지를 입력하세요",
+  placeholder: "메세지를 입력하세요 (최대 100글자)",
+  maxLength: 100,
   required: true,
 })`
   width: 100%;
@@ -90,6 +91,7 @@ export default function Input() {
   // STATES
   const [sendTo, setSendTo] = useState("민지");
   const [text, setText] = useState("");
+  const [name, setName] = useState("");
 
   // FUNCTIONS
   const handleChangeSendTo = (e) => {
@@ -98,6 +100,10 @@ export default function Input() {
 
   const handleChangeText = (e) => {
     setText(e.target.value);
+  };
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
   };
 
   const addMessage = (task) => {
@@ -110,11 +116,13 @@ export default function Input() {
       id: uuid(),
       sendTo,
       text,
+      name,
       isEdit: false,
       createdAt: new Date(),
     };
     addMessage(task);
     setSendTo("민지");
+    setName("");
     setText("");
   };
 
@@ -137,6 +145,14 @@ export default function Input() {
                 </Options>
               ))}
             </select>
+          </span>
+          <span>
+            <p>Name : &nbsp;</p>
+            <input
+              onChange={(e) => handleChangeName(e)}
+              value={name}
+              required
+              placeholder="이름을 입력하세요"></input>
           </span>
           <span>
             <p>Message : &nbsp;</p>
