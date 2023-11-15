@@ -129,7 +129,6 @@ export default function List() {
           {members.map((el, i) => (
             <FilterBtn
               key={i}
-              $bgColor="white"
               onClick={() => {
                 filterMember(el);
               }}>
