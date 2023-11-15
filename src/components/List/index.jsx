@@ -37,13 +37,13 @@ const MessageContainer = styled.div`
 `;
 
 const ListContainer = styled.div`
-  height: 150px;
+  height: 200px;
   padding: 1rem;
   border: 1px solid #1f1f1f50;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.3rem;
   cursor: pointer;
   animation: ${CompFade} 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
   transition: all 0.1s ease;
@@ -66,10 +66,12 @@ const ListSectionTitle = styled.h1`
 `;
 
 const MessageBox = styled.div`
-  width: 200px;
+  width: 100%;
   height: 40px;
+  border-top: 1px solid #1f1f1f50;
   word-wrap: break-word;
   text-overflow: ellipsis;
+  letter-spacing: 0.02rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -133,7 +135,8 @@ export default function List({ messages }) {
             <ListContainer
               onClick={() => navi(`${returnDetailUrl(message.id)}`)}
               key={message.id}>
-              <h4>To.&nbsp;{message.sendTo}</h4>
+              <h5>To.&nbsp;{message.sendTo}</h5>
+              <h3>{message.name}</h3>
               <h6>{message.createdAt.toString().slice(0, 15)}</h6>
               <MessageBox>
                 <p>{message.text}</p>

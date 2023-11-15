@@ -46,9 +46,14 @@ const DetailTitle = styled.h3`
   border-bottom: 1px solid #1f1f1f;
 `;
 
+const DetailName = styled.h4`
+  padding: 1rem;
+  border-bottom: 1px solid #1f1f1f;
+`;
+
 const DetailText = styled.div`
   width: 100%;
-  height: 380px;
+  height: 385.4px;
   word-wrap: break-word;
   overflow-y: scroll;
   padding: 1rem;
@@ -105,6 +110,7 @@ export default function Detail({ messages, setMessages }) {
       <DetailContainer>
         <MessageDetailBox>
           <DetailTitle>To.&nbsp;{data.sendTo}</DetailTitle>
+          <DetailName>Name: &nbsp;{data.name}</DetailName>
           <DetailText>{data.text}</DetailText>
           <ButtonBox>
             <Button onClick={openModal} role="delete">

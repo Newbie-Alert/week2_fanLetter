@@ -13,9 +13,10 @@ const ModalContainer = styled.div`
   border: 1px solid #1f1f1f;
   border-radius: 9px;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: aliceblue;
 `;
 
 const ConfirmButtonBox = styled.div`

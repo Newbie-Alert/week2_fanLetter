@@ -46,7 +46,7 @@ const InputBox = styled.div`
 const MessageArea = styled.textarea.attrs({
   rows: "15",
   cols: "25",
-  placeholder: "메세지를 입력하세요",
+  placeholder: "메세지를 입력하세요 (최대 100글자)",
   required: true,
 })`
   width: 100%;
@@ -86,6 +86,7 @@ export default function Input({ setMessages }) {
   // STATES
   const [sendTo, setSendTo] = useState("민지");
   const [text, setText] = useState("");
+  const [name, setName] = useState("");
 
   // FUNCTIONS
   const handleChangeSendTo = (e) => {
@@ -94,6 +95,10 @@ export default function Input({ setMessages }) {
 
   const handleChangeText = (e) => {
     setText(e.target.value);
+  };
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
   };
 
   const addMessage = (task) => {
@@ -105,6 +110,7 @@ export default function Input({ setMessages }) {
     let task = {
       id: uuid(),
       sendTo,
+      name,
       text,
       isEdit: false,
       createdAt: new Date(),
@@ -112,6 +118,7 @@ export default function Input({ setMessages }) {
     addMessage(task);
     setSendTo("민지");
     setText("");
+    setName("");
   };
 
   // MAIN RETURN
@@ -135,7 +142,18 @@ export default function Input({ setMessages }) {
             </select>
           </span>
           <span>
+            <p>Name : &nbsp;</p>
+            <input
+              onChange={(e) => handleChangeName(e)}
+              value={name}
+              type="text"
+              required
+              placeholder="이름을 입력하세요"
+            />
+          </span>
+          <span>
             <p>Message : &nbsp;</p>
+
             <MessageArea onChange={handleChangeText} value={text} />
           </span>
           <SubmitBtn onSubmit={HandleSubmit}>전송하기</SubmitBtn>
