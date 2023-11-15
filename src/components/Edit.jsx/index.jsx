@@ -31,6 +31,7 @@ const EditName = styled.h4`
 const EditText = styled.textarea.attrs((props) => ({
   placeholder: props.$currentText,
   ref: props.ref,
+  maxLength: 100,
 }))`
   width: 100%;
   height: 382px;
