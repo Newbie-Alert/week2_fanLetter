@@ -43,11 +43,14 @@ const SearchInput = styled.input.attrs({
 export default function Header() {
   // HOOKS
   const navi = useNavigate();
+
+  // FUNCTION
   const toHome = () => navi("/");
 
   // State
   const [headerPosition, setHeaderPosition] = useState(0);
 
+  // EVENT LISTENER
   window.addEventListener("scroll", () => {
     if (window.scrollY > 10) {
       setHeaderPosition(-100);

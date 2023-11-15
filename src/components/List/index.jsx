@@ -38,8 +38,12 @@ const MessageContainer = styled.div`
   overflow-y: scroll;
   animation: ${CompFade} 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1280px) {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
@@ -70,6 +74,12 @@ const ListSectionTitle = styled.h1`
   display: flex;
   align-items: center;
   gap: 2.5rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1rem;
+  }
 `;
 
 const MessageBox = styled.div`
@@ -81,6 +91,9 @@ const MessageBox = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  @media screen and (max-width: 768px) {
+    width: 150px;
+  }
 `;
 
 const FilterBtnContainer = styled.div`

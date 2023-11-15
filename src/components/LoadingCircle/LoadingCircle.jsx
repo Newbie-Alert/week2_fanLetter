@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
+// STYLED COMPONENTS
 const CircleAni = keyframes`
   to {
     transform: rotate(0deg);
@@ -40,6 +41,7 @@ const SectorOne = styled.div`
   opacity: 0.7;
   animation: ${CircleAni} 3.5s infinite 2s forwards;
 `;
+
 const SectorTwo = styled.div`
   width: 100%;
   height: 100%;
@@ -52,6 +54,7 @@ const SectorTwo = styled.div`
   opacity: 0.2;
   animation: ${CircleAni} 2s infinite 2s forwards;
 `;
+
 const SectorThree = styled.div`
   width: 100%;
   height: 100%;
@@ -65,6 +68,7 @@ const SectorThree = styled.div`
   animation: ${CircleAni} 1.5s infinite forwards;
 `;
 
+// MAIN COMPONENT
 export default function LoadingCircle() {
   return (
     <Circle>

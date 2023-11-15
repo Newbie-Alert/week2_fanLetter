@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import uuid from "react-uuid";
-
 import { useDispatch } from "react-redux";
 import { addTask } from "../../redux/module/messages";
 
@@ -35,11 +34,13 @@ const InputBox = styled.div`
     outline: none;
     border: none;
   }
+
   span {
     display: flex;
     align-items: center;
     font-weight: 500;
   }
+
   p {
     text-align: right;
     width: 90px;
@@ -57,8 +58,6 @@ const MessageArea = styled.textarea.attrs({
   padding: 0.5rem;
   border-radius: 5px;
 `;
-
-const option = ["민지", "하니", "다니엘", "혜린", "혜인"];
 
 const Options = styled.option.attrs((props) => ({
   value: props.name,
@@ -92,6 +91,9 @@ export default function Input() {
   // STATES
   const [sendTo, setSendTo] = useState("민지");
   const [text, setText] = useState("");
+
+  // VARIABLES
+  const option = ["민지", "하니", "다니엘", "혜린", "혜인"];
 
   // FUNCTIONS
   const handleChangeSendTo = (e) => {

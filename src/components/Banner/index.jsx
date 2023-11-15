@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import LoadingCircle from "../LoadingCircle/LoadingCircle";
 
 // STYLED COMPONENTS
 const FadeAnimation = keyframes`
@@ -56,12 +55,6 @@ export default function Banner() {
     returnRandomImg();
   }, []);
 
-  // if (returnRandomImg() !== null)
-  //   return (
-  //     <BannerContainer>
-  //       <LoadingCircle />
-  //     </BannerContainer>
-  //   );
   // MAIN RETURN
   return (
     <BannerContainer>
