@@ -131,7 +131,7 @@ export default function List() {
         </FilterBtnContainer>
       </ListSectionTitle>
       <MessageContainer>
-        {filtered.length === 0 && <h3>메세지가 없습니다!</h3>}
+        {filtered.length === 0 && <h3>{member}에게 메세지가 없습니다🥲</h3>}
         {filtered?.map((message) => {
           return (
             <ListContainer
