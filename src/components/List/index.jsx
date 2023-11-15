@@ -84,14 +84,15 @@ const ListSectionTitle = styled.h1`
 
 const MessageBox = styled.div`
   width: 100%;
-  height: 40px;
+  padding-top: 0.5rem;
+  height: 35px;
   border-top: 1px solid #1f1f1f50;
   word-wrap: break-word;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   @media screen and (max-width: 768px) {
     width: 150px;
   }
@@ -152,8 +153,8 @@ export default function List() {
             <FilterBtn
               $bg={color ? "skyblue" : "white"}
               key={i}
-              onClick={(e) => {
-                changeBg(e);
+              onClick={() => {
+                changeBg();
                 filterMember(el);
               }}>
               {el}
