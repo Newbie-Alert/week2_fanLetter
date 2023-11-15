@@ -88,6 +88,9 @@ const FilterBtnContainer = styled.div`
 `;
 
 const FilterBtn = styled.button`
+  &:focus {
+    background-color: ${(props) => props.$bg};
+  }
   &:hover {
     background-color: #1369b5;
     color: white;
@@ -105,6 +108,7 @@ export default function List() {
 
   // STATES
   const [member, setMember] = useState("전체");
+  const [color, setColor] = useState(false);
 
   // VARIABLES
   const members = ["전체", "민지", "하니", "다니엘", "혜린", "혜인"];
@@ -116,6 +120,7 @@ export default function List() {
   // FUCNTIONS
   const filterMember = (memberName) => setMember(memberName);
   const returnDetailUrl = (id) => `/message/${id}`;
+  const changeColor = () => setColor(true);
 
   // HOOKS
   const navi = useNavigate();
@@ -129,8 +134,10 @@ export default function List() {
           {members.map((el, i) => (
             <FilterBtn
               key={i}
+              $bg={color ? "skyblue" : "white"}
               onClick={() => {
                 filterMember(el);
+                changeColor();
               }}>
               {el}
             </FilterBtn>
