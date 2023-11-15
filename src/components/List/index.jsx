@@ -94,6 +94,10 @@ const FilterBtn = styled.button`
   }
 `;
 
+const NoData = styled.h3`
+  width: 300px;
+`;
+
 // MAIN COMPONENT
 export default function List() {
   // CONTEXT
@@ -111,7 +115,6 @@ export default function List() {
 
   // FUCNTIONS
   const filterMember = (memberName) => setMember(memberName);
-
   const returnDetailUrl = (id) => `/message/${id}`;
 
   // HOOKS
@@ -124,14 +127,21 @@ export default function List() {
         Messages
         <FilterBtnContainer>
           {members.map((el, i) => (
-            <FilterBtn key={i} onClick={() => filterMember(el)}>
+            <FilterBtn
+              key={i}
+              $bgColor="white"
+              onClick={() => {
+                filterMember(el);
+              }}>
               {el}
             </FilterBtn>
           ))}
         </FilterBtnContainer>
       </ListSectionTitle>
       <MessageContainer>
-        {filtered.length === 0 && <h3>{member}에게 메세지가 없습니다🥲</h3>}
+        {filtered.length === 0 && (
+          <NoData>{member}에게 메세지가 없습니다🥲</NoData>
+        )}
         {filtered?.map((message) => {
           return (
             <ListContainer
