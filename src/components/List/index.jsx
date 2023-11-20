@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 // STYLED COMPONENT
 const CompFade = keyframes`
@@ -89,9 +89,14 @@ const FilterBtnContainer = styled.div`
 `;
 
 const FilterBtn = styled.button`
-  &:focus {
-    background-color: ${(props) => props.$bg};
-  }
+  ${(props) => {
+    if (props.$member === props.children) {
+      return css`
+        background-color: #286ba5;
+        color: white;
+      `;
+    }
+  }}
   &:hover {
     background-color: #0c3a6e;
     color: white;
@@ -110,7 +115,6 @@ export default function List({ messages }) {
 
   // STATES
   const [member, setMember] = useState("전체");
-  const [color, setColor] = useState(false);
 
   // VARIABLES
   const members = ["전체", "민지", "하니", "다니엘", "혜린", "혜인"];
@@ -126,8 +130,6 @@ export default function List({ messages }) {
 
   const returnDetailUrl = (id) => `/message/${id}`;
 
-  const changeColor = () => setColor(true);
-
   // MAIN RETURN
   return (
     <>
@@ -137,10 +139,9 @@ export default function List({ messages }) {
           {members.map((el, i) => (
             <FilterBtn
               key={i}
-              $bg={color ? "skyblue" : "white"}
+              $member={member}
               onClick={() => {
                 filterMember(el);
-                changeColor();
               }}>
               {el}
             </FilterBtn>
@@ -148,9 +149,7 @@ export default function List({ messages }) {
         </FilterBtnContainer>
       </ListSectionTitle>
       <MessageContainer>
-        {filtered.length === 0 && (
-          <NoData>{member}에게 메세지가 없습니다🥲</NoData>
-        )}
+        {filtered.length === 0 && <NoData>등록 된 메세지가 없습니다🥲</NoData>}
         {filtered?.map((message) => {
           return (
             <ListContainer

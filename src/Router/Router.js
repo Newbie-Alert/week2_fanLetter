@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { GlobalStyle } from "../GlobalStyle";
 import { useState } from "react";
 import App from "../App";
@@ -11,11 +11,12 @@ const Router = () => {
   // MAIN RETURN
   return (
     <BrowserRouter>
-      <Header />
       <GlobalStyle />
+      <Header />
       <Routes>
         <Route path="/" element={<App messages={messages} setMessages={setMessages} />} />
         <Route path="/message/:id" element={<Detail messages={messages} setMessages={setMessages} />} />
+        <Route path="*" element={<Navigate replace to='/' />} />
       </Routes>
     </BrowserRouter>
   )
