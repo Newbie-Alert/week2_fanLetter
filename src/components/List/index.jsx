@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { useSelector } from "react-redux";
 import Skeleton from "../Skeleton/Skeleton";
 
@@ -124,13 +124,22 @@ const FilterBtnContainer = styled.div`
 `;
 
 const FilterBtn = styled.button`
-  &:focus {
-    background-color: ${(props) => props.$bg};
-  }
-
+  ${(props) => {
+    if (props.$member === props.children) {
+      return css`
+        color: white;
+        background-color: #136fc0;
+      `;
+    } else {
+      return css`
+        background-color: white;
+        color: black;
+      `;
+    }
+  }};
   &:hover {
-    background-color: #1369b5;
-    color: white;
+    background-color: #83c5ff;
+    color: black;
   }
 `;
 
@@ -141,7 +150,6 @@ export default function List() {
 
   // STATE
   const [member, setMember] = useState("전체");
-  const [color, setColor] = useState(false);
 
   // Variables
   const members = ["전체", "민지", "하니", "다니엘", "혜린", "혜인"];
@@ -155,8 +163,6 @@ export default function List() {
 
   const returnDetailUrl = (id) => `/message/${id}`;
 
-  const changeBg = () => setColor(true);
-
   // HOOKS
   const navi = useNavigate();
 
@@ -167,10 +173,9 @@ export default function List() {
         <FilterBtnContainer>
           {members.map((el, i) => (
             <FilterBtn
-              $bg={color ? "skyblue" : "white"}
+              $member={member}
               key={i}
               onClick={() => {
-                changeBg();
                 filterMember(el);
               }}>
               {el}

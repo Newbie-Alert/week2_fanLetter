@@ -1,12 +1,15 @@
-import "./App.css";
-import Banner from "./components/Banner";
 import Input from "./components/Input";
 import Card from "./components/Card";
+import React from "react";
+
+const Banner = React.lazy(() => import("./components/Banner"));
 
 function App() {
   return (
     <div className="App">
-      <Banner />
+      <React.Suspense fallback={<div>Loading</div>}>
+        <Banner />
+      </React.Suspense>
       <Input />
       <Card />
     </div>
