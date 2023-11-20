@@ -43,7 +43,7 @@ export default function Banner() {
   // USE EFFECT
   useEffect(() => {
     returnRandomImg();
-  }, [randomImg]);
+  }, []);
 
   // MAIN RETURN
   return (

@@ -9,8 +9,8 @@ const Router = () => {
   // MAIN RETURN
   return (
     <BrowserRouter>
-      <Header />
       <GlobalStyle />
+      <Header />
       <MessageContext>
         <Routes>
           <Route path="/" element={<App />} />
