@@ -127,6 +127,7 @@ export default function Input() {
       name,
       isEdit: false,
       createdAt: new Date(),
+      avatar: "url(/assets/default-avatar.png)",
     };
     addMessage(task);
     setSendTo("민지");

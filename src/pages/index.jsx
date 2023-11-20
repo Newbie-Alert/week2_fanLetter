@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Modal from "../components/Modal/index.jsx";
 import Edit from "../components/Edit.jsx/index.jsx";
 import { useSelector } from "react-redux";
+import { InfoAvatar } from "../components/List/index.jsx";
 
 // STYLED COMPONENTS
 const CompFade = keyframes`
@@ -47,9 +48,17 @@ const DetailTitle = styled.h3`
   border-bottom: 1px solid #1f1f1f;
 `;
 
+const DetailInfo = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid #1f1f1f;
+  padding-left: 0.5rem;
+`;
+
 const DetailName = styled.h4`
   padding: 1rem;
-  border-bottom: 1px solid #1f1f1f;
 `;
 
 const DetailText = styled.div`
@@ -107,7 +116,11 @@ export default function Detail() {
       <DetailContainer>
         <MessageDetailBox>
           <DetailTitle>To.&nbsp;{data.sendTo}</DetailTitle>
-          <DetailName>Name: &nbsp;{data.name}</DetailName>
+          <DetailInfo>
+            <InfoAvatar $img={data.avatar}></InfoAvatar>
+            <DetailName>Name: &nbsp;{data.name}</DetailName>
+          </DetailInfo>
+
           <DetailText>{data.text}</DetailText>
           <ButtonBox>
             <Button onClick={openModal} role="delete">

@@ -67,6 +67,22 @@ const ListContainer = styled.div`
   }
 `;
 
+const ListInfo = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const InfoAvatar = styled.div`
+  width: 40px;
+  height: 40px;
+  background-image: ${(props) => `${props.$img}`};
+  background-position: center;
+  background-size: cover;
+  border-radius: 50px;
+`;
+
 const ListSectionTitle = styled.h1`
   text-align: left;
   padding: 1rem 2.5rem;
@@ -172,8 +188,13 @@ export default function List() {
               <ListContainer
                 onClick={() => navi(`${returnDetailUrl(message.id)}`)}
                 key={message.id}>
-                <h4>To.&nbsp;{message.sendTo}</h4>
-                <h6>{message.createdAt.toString().slice(0, 15)}</h6>
+                <ListInfo>
+                  <div>
+                    <h4>To.&nbsp;{message.sendTo}</h4>
+                    <h6>{message.createdAt.toString().slice(0, 15)}</h6>
+                  </div>
+                  <InfoAvatar $img={message.avatar}></InfoAvatar>
+                </ListInfo>
                 <MessageBox>
                   <p>{message.text}</p>
                 </MessageBox>
