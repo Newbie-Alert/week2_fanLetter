@@ -23,7 +23,7 @@ const initialValue = []
 const messages = (state = initialValue, action) => {
   switch (action.type) {
     case ADD_MSG:
-      return state = [action.payload, ...state]
+      return [action.payload, ...state]
     case DELETE_MSG:
       return state = state.filter(msg => msg.id !== action.payload)
     case EDIT_MSG:
