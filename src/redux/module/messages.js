@@ -27,9 +27,10 @@ const messages = (state = initialValue, action) => {
     case DELETE_MSG:
       return state = state.filter(msg => msg.id !== action.payload)
     case EDIT_MSG:
-      let found = state.find(el => el.id === action.target.id)
+      let copy = [...state]
+      let found = copy.find(el => el.id === action.target.id)
       found.text = action.payload;
-      return state
+      return copy
     default:
       return state
   }
